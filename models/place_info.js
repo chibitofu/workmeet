@@ -15,7 +15,10 @@ module.exports = function(sequelize, DataTypes) {
     wifi: DataTypes.INTEGER,
     seating: DataTypes.INTEGER,
     noise: DataTypes.INTEGER,
-    outlets: DataTypes.INTEGER
+    outlets: DataTypes.INTEGER,
+    address: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    fav_count: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {

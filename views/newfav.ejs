@@ -8,7 +8,6 @@
     <input type="hidden" value="<%= data.icon %>" name="icon">
     <input type="hidden" value="<%= data.geometry.location.lat %>" name="lat">
     <input type="hidden" value="<%= data.geometry.location.lng %>" name="lng">
-    <input type="hidden" value="<%= data.opening_hours.weekday_text %>" name="hours">
     <input type="hidden" value="<%= img %>" name="img">
     <input type="hidden" value="<%= data.types %>" name="types">
     <p>name:<%= data.name %></p><input class="form-control" type="hidden" value="<%= data.name %>" name="name">
@@ -53,6 +52,7 @@
       </div>
     <div>
       <% if(data.opening_hours) { %>
+        <input type="hidden" value="<%= data.opening_hours.weekday_text %>" name="hours">
         <ul>
           <% data.opening_hours.weekday_text.forEach(function(hours) { %>
             <li style="list-style-type:none"><%= hours %></li>

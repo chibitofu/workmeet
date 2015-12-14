@@ -42,16 +42,20 @@ module.exports = {
         type: Sequelize.STRING
       },
       wifi: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       seating: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       noise: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       outlets: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,
