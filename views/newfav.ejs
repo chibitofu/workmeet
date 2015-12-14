@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-xs-1">
+  </div>
+  <form class="navbar-form navbar-left" role="search" method="POST" action="/favorites">
+  <div class="col-xs-5">
+    <img src="<%= data.icon %>">
+    <input type="hidden" value="<%= data.place_id %>" name="placeid">
+    <input type="hidden" value="<%= data.icon %>" name="icon">
+    <input type="hidden" value="<%= data.geometry.location.lat %>" name="lat">
+    <input type="hidden" value="<%= data.geometry.location.lng %>" name="lng">
+    <input type="hidden" value="<%= data.opening_hours.weekday_text %>" name="hours">
+    <input type="hidden" value="<%= img %>" name="img">
+    <input type="hidden" value="<%= data.types %>" name="types">
+    <p>name:<%= data.name %></p><input class="form-control" type="hidden" value="<%= data.name %>" name="name">
+    <p>rating: <%= data.rating %></p><input class="form-control" type="hidden" value="<%= data.rating %>" name="rating">
+    <p>google url: <%= data.url %></p><input class="form-control" type="hidden" value="<%= data.url %>" name="url" >
+    <p>website: <%= data.website %></p><input class="form-control" type="hidden" value="<%= data.website %>" name="website">
+    <p>Address: <%= data.formatted_address %></p><input class="form-control" type="hidden" value="<%= data.formatted_address %>" name="address">
+    <p>Phone: <%= data.formatted_phone_number %></p><input class="form-control" type="hidden" value="<%= data.formatted_phone_number %>" name="phone">
+    <p>
+    <% data.types.forEach(function(types) { %>
+        <span><%= types %>, </span>
+    <% }); %>
+  </p>
+  </div>
+    <div class="col-xs-5">
+      <div>
+        Wifi<br>
+        <input type="radio" value="0" name="wifi" checked> none
+        <input type="radio" value="2" name="wifi"> bad
+        <input type="radio" value="5" name="wifi"> average
+        <input type="radio" value="10" name="wifi"> good
+      </div>
+      <div>
+        Noise<br>
+        <input type="radio" value="1" name="noise"> quiet
+        <input type="radio" value="5" name="noise" checked> average
+        <input type="radio" value="10" name="noise"> loud
+      </div>
+      <div>
+        Seating<br>
+        <input type="radio" value="0" name="seating" checked> none
+        <input type="radio" value="2" name="seating"> little
+        <input type="radio" value="5" name="seating"> average
+        <input type="radio" value="10" name="seating"> lots
+      </div>
+      <div>
+        Outlets<br>
+        <input type="radio"  value="0" name="outlets" checked> none
+        <input type="radio"  value="2" name="outlets"> bad
+        <input type="radio"  value="5" name="outlets" > average
+        <input type="radio"  value="10" name="outlets"> good
+      </div>
+    <div>
+      <% if(data.opening_hours) { %>
+        <ul>
+          <% data.opening_hours.weekday_text.forEach(function(hours) { %>
+            <li style="list-style-type:none"><%= hours %></li>
+          <% }); %>
+        </ul>
+      <% }; %>
+    </div>
+  </div>
+</div>
+<div class="col-xs-1">
+</div>
+<div class="row">
+  <div class="col-xs-12">
+      <div>
+        <% if (img.length > 0) { %>
+      <% img.forEach(function(photos) { %>
+          <img src="<%= photos %>">
+      <% }); }%>
+      </div>
+      <p><button type="submit" class="btn btn-default">Submit</button></p>
+    </form>
+  </div>
+</div>

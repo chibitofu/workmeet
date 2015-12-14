@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-12 text -center">
+    <h1>Hello</h1>
+    <% data.forEach(function(data) { %>
+      <div>
+        <div>
+          <a href="/favorites/<%= data.place_id %>">Favorite</a>
+        </div>
+        <div>
+          <p><img src="<%= data.icon %>"><%= data.name %> <span> Rating: <%= data.rating %></span></p>
+        </div>
+        <p><%= data.vicinity %></p>
+          <%  }); %>
+      </div>
+  </div>
+</div>
