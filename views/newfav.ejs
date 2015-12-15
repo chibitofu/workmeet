@@ -2,7 +2,7 @@
   <div class="col-xs-1">
   </div>
   <form class="navbar-form navbar-left" role="search" method="POST" action="/favorites">
-  <div class="col-xs-5">
+  <div class="col-xs-4">
     <img src="<%= data.icon %>">
     <input type="hidden" value="<%= data.place_id %>" name="placeid">
     <input type="hidden" value="<%= data.icon %>" name="icon">
@@ -22,7 +22,21 @@
     <% }); %>
   </p>
   </div>
-    <div class="col-xs-5">
+    <div class="col-xs-4">
+      <div>
+        Food
+        <div id="food">
+        </div>
+        <input id="newFood" type="text" class="form-control">
+        <button id="foodButt" type="button" class="btn btn-default">Add Food</button>
+      </div>
+      <div>
+        Drink
+        <div id="drink">
+        </div>
+        <input id="newDrink" type="text" class="form-control">
+        <button id="drinkButt" type="button" class="btn btn-default">Add Drink</button>
+      </div>
       <div>
         Wifi<br>
         <input type="radio" value="0" name="wifi" checked> none
@@ -50,7 +64,17 @@
         <input type="radio"  value="5" name="outlets" > average
         <input type="radio"  value="10" name="outlets"> good
       </div>
+      <div>
+        Tags
+        <div id="tag">
+        </div>
+        <input id="newTag" type="text" class="form-control">
+        <button id="tagButt" type="button" class="btn btn-default">Add Tag</button>
+      </div>
+  </div>
+  <div class="col-xs-3">
     <div>
+      <p>Business Hours</p>
       <% if(data.opening_hours) { %>
         <input type="hidden" value="<%= data.opening_hours.weekday_text %>" name="hours">
         <ul>
@@ -61,8 +85,6 @@
       <% }; %>
     </div>
   </div>
-</div>
-<div class="col-xs-1">
 </div>
 <div class="row">
   <div class="col-xs-12">

@@ -1,1 +1,48 @@
-<h1>Hello</h1>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>Favorites</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <div id="accordion">
+        <% places.forEach(function(place) { %>
+          <div class="group">
+          <div class="sortable">
+            <p><%= place.name %> <span class="pull-right">Rating:<%= place.rating %></span></p>
+            <p><%= place.address %>
+            <%= place.phone %></p>
+          </div>
+          <div>
+            <p>
+              <p>Wifi: <%= place.wifi %></p>
+              <p>Wifi: <%= place.wifi %></p>
+              <p>Seating: <%= place.seating %></p>
+              <p>Outlets: <%= place.outlets %></p>
+              <p>Noise: <%= place.noise %></p>
+            </p>
+            <div>
+              <p>Business Hours</p>
+              <% if(place.hours) { %>
+                <ul>
+                  <% place.hours.forEach(function(hours) { %>
+                    <li style="list-style-type:none"><%= hours %></li>
+                  <% }); %>
+                </ul>
+              <% }; %>
+            </div>
+            <p>
+            <% place.types.forEach(function(types) { %>
+                <span><%= types %>, </span>
+            <% }); %>
+          </p>
+          </div>
+          </div>
+        <% }) %>
+    </div>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>

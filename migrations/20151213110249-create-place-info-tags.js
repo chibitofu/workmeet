@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('place_infoTags', {
+    return queryInterface.createTable('placeinfoTags', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      place_infoId: {
+      placeinfoId: {
         type: Sequelize.INTEGER
       },
       tagId: {
@@ -25,6 +25,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('place_infoTags');
+    return queryInterface.dropTable('placeinfoTags');
   }
 };

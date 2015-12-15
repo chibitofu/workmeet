@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('place_infoFoods', {
+    return queryInterface.createTable('placeinfoFoods', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      place_infoId: {
+      placeinfoId: {
         type: Sequelize.INTEGER
       },
       foodId: {
@@ -25,6 +25,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('place_infoFoods');
+    return queryInterface.dropTable('placeinfoFoods');
   }
 };

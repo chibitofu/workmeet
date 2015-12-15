@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var place_infoFoods = sequelize.define('place_infoFoods', {
-    place_infoId: DataTypes.INTEGER,
+  var placeinfoFoods = sequelize.define('placeinfoFoods', {
+    placeinfoId: DataTypes.INTEGER,
     foodId: DataTypes.INTEGER
   }, {
     classMethods: {
@@ -10,5 +10,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return place_infoFoods;
+  return placeinfoFoods;
 };

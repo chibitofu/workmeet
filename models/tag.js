@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.tag.belongsToMany(models.place_info, {through: 'place_infoTags'});
+        models.tag.belongsToMany(models.placeinfo, {through: 'placeinfoTags'});
       }
     },
     hooks: {

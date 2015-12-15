@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var place_info = sequelize.define('place_info', {
+  var placeinfo = sequelize.define('placeinfo', {
     place_id: DataTypes.STRING,
     name: DataTypes.STRING,
     icon: DataTypes.STRING,
@@ -23,12 +23,12 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.place_info.belongsToMany(models.tag, {through: 'place_infoTags'});
-        models.place_info.belongsToMany(models.drink, {through: 'place_infoDrinks'});
-        models.place_info.belongsToMany(models.food, {through: 'place_infoFoods'});
-        models.place_info.belongsToMany(models.user, {through: 'place_infoUsers'});
+        models.placeinfo.belongsToMany(models.tag, {through: 'placeinfoTags'});
+        models.placeinfo.belongsToMany(models.drink, {through: 'placeinfoDrinks'});
+        models.placeinfo.belongsToMany(models.food, {through: 'placeinfoFoods'});
+        models.placeinfo.belongsToMany(models.user, {through: 'placeinfoUsers'});
       }
     }
   });
-  return place_info;
+  return placeinfo;
 };
