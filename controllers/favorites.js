@@ -21,7 +21,28 @@ router.get('/:id', function(req, res) {
       img.push('https://maps.googleapis.com/maps/api/place/photo?maxwidth=125&photoreference=' + data.result.photos[i].photo_reference + '&key=' + apiKey);
     }
   }
-  res.render('newfav', {data: data.result, img: img});
+
+  db.placeinfo.findOne({
+    where: {place_id: data.result.place_id}
+  }).then(function(places) {
+      db.placeinfo.find({
+        where: {id: places.id},
+        include: [db.food]
+      }).then(function(food) {
+        db.placeinfo.find({
+          where: {id: places.id},
+          include: [db.drink]
+        }).then(function(drink) {
+          db.placeinfo.find({
+            where: {id: places.id},
+            include: [db.tag]
+          }).then(function(tag) {
+
+            res.render('newfav', {data: data.result, img: img, food: food, drink: drink, tag: tag});
+          });
+        });
+      });
+    });
   });
 });
 
