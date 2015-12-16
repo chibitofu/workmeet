@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="text-center">
+      <% if (typeof alerts !== 'undefined') { %>
+        <% for (key in alerts) { %>
+          <% alerts[key].forEach(function(thisMsg) { %>
+            <div class="alert alert-<%= key %>"><%= thisMsg %></div>
+          <% }); %>
+        <% } %>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <form method="POST" action="/login" class="form">
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="user name" name="name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="email" placeholder="email" name="email">
+      </div>
+      <div class="form-group">
+        <input id="password1" class="form-control" type="password" placeholder="password" name="password1">
+      </div>
+      <button type="submit" class="btn btn-default">Login</button>
+    </form>
+  </div>
+</div>

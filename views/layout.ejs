@@ -14,27 +14,32 @@
         </div>
 
         <div class="collapse navbar-collapse" id="search_nav">
-          <%# <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link</a></li>
-          </ul>%>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/signup">Signup</a></li>
+            <li class="active"><a href="/login">Login</a></li>
+          </ul>
           <form class="navbar-form navbar-right" method="GET" action="/location">
             <div class="form-group">
-              <input id="geoLoc" type="text" class="form-control" name="geoLoc" style='width:auto' placeholder="Location">
-              <button id="geo" type="button" class="btn btn default glyphicon glyphicon-screenshot" value=""></button>
+              <input id="lat" type="hidden" class="form-control" name="lat" style='width:auto'>
+              <input id="lon" type="hidden" class="form-control" name="lon">
             </div>
           </form>
           <form class="navbar-form navbar-right" role="search" method="GET" action="/search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search" name="query">
-              <input id="lat" type="hidden" class="form-control" name="lat" style='width:auto'>
-              <input id="lon" type="hidden" class="form-control" name="lon">
             </div>
             <button type="submit" class="btn btn-defualt search">Submit</button>
+
+            <input id="geoLoc" type="text" class="form-control" name="geoLoc" style='width:auto' placeholder="Location">
+            <button id="geo" type="button" class="btn btn default glyphicon glyphicon-screenshot" value=""></button>
             </form>
         </div>
       </div>
     </nav>
     <div class="container">
+      <div class="row">
+        <% include ./partials/alerts %>
+      </div>
     <%- body %>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

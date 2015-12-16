@@ -7,17 +7,54 @@ var db = require('./models');
 var bcrypt = require('bcrypt');
 var dotenv = require('dotenv');
 var geocoder = require('geocoder');
+var flash = require('connect-flash');
+var session = require('express-session');
 dotenv.load();
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views') );
 app.use(ejslayouts);
 app.use(bodyparser.urlencoded({extended:false} ) );
+app.use(flash());
+
+app.use(session({
+  secret: 'allyourbases',
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(function(req, res, next) {
+  if (req.session.user) {
+    db.user.findById(req.session.user).then(function(user){
+      req.currentUser = user;
+      next();
+    });
+  } else {
+    req.currentUser = false;
+    next();
+  }
+});
+
+app.use(function(req, res, next){
+  req.session.lastPage = req.header('Referer');
+  res.locals.lastPage = req.session.lastPage;
+  next();
+});
+
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.currentUser;
+  res.locals.alerts = req.flash();
+  next();
+  //Pass in alerts//
+});
 
 app.use('/search', require('./controllers/search') );
 app.use('/favorites', require('./controllers/favorites') );
+app.use('/signup', require('./controllers/signup') );
+app.use('/login', require('./controllers/login') );
 
 app.get('/', function(req, res) {
+  req.session.whatever="hello";
   res.render('index');
 });
 

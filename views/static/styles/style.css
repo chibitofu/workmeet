@@ -25,10 +25,13 @@ footer {
 
 #slogan {
   font-family: 'Bree Serif', serif;
-  color: rgb(255, 255, 255);
-  font-size: 36px;
-  text-shadow: 1px 1px 10px rgb(40, 40, 40);
-  fon
+  color: rgb(234,53,86);
+  font-size: 30px;
+  text-shadow: 1px 1px 10px rgb(228, 228, 228);
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  margin: 10px;
+  padding: 10px 15px;
 }
 
 .toprow {
@@ -72,6 +75,11 @@ footer {
   height: 15px;;
   margin-bottom: 4px;
 }
+
+
+
+
+
 
 
 .navbar-default {
@@ -126,7 +134,8 @@ footer {
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #ffffff;
+  border-color: #61d2d6;
+  border-style: solid;
 }
 .navbar-default .navbar-link {
   color: #ffffff;

@@ -1,0 +1,7 @@
+<% if(typeof alerts !== undefined) { %>
+  <% for(key in alerts) { %>
+  <% alerts[key].forEach(function(thisMSG) { %>
+    <div class="alert alert-<%= key %>"><%= thisMSG %></div>
+  <% }); %>
+  <% } %>
+<% } %>

@@ -19,8 +19,8 @@ $('#geo').click(function(e) {
       data: {id: id},
       success: function(data, status, obj) {
         $('#geoLoc').val(data.formatted_address);
-        $('#lat').val(data.geometry.location.lat);
-        $('#lon').val(data.geometry.location.lng);
+        // $('#lat').val(data.geometry.location.lat);
+        // $('#lon').val(data.geometry.location.lng);
       },
       error: function(err, status, message) {
         $('#geoLoc').val("Location not found");
