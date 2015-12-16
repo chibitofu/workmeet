@@ -17,24 +17,25 @@ app.use(bodyparser.urlencoded({extended:false} ) );
 app.use('/search', require('./controllers/search') );
 app.use('/favorites', require('./controllers/favorites') );
 
-
 app.get('/', function(req, res) {
   res.render('index');
 });
 
 app.get('/location', function(req, res) {
-  var location = req.query.geoLocation;
+  var location = req.query.id;
   var hasNum = /\d/;
   if( hasNum.test(location) ) {
     var latLonString = location.split(',', 2);
     var latLon = {lat: parseFloat(latLonString[0]), lon: parseFloat(latLonString[1])};
     geocoder.reverseGeocode( latLon.lat,latLon.lon, function ( err, data ) {
-      console.log(data.results[0].formatted_address);
-      res.redirect('index');
+      if (err) {
+        res.status('error');
+      } else {
+        res.status('success').send(data.results[0]);
+      }
     });
   } else if ( typeof location == 'string') {
     geocoder.geocode(location, function ( err, data ) {
-      debugger;
       if (err) {
         console.log(err);
       } else {

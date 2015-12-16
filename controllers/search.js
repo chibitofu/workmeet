@@ -11,6 +11,7 @@ router.get('/', function(req, res) {
 
   request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lon + '&rankby=distance&keyword=' + loc + '&key=' + apiKey, function(err, response, body) {
     var data = JSON.parse(body);
+    debugger;
     if(!err && data) {
       res.render('search', {data: data.results});
     } else {

@@ -1,19 +1,31 @@
 $(document).ready(function() {
 
-  function getLocation() {
+$('#geo').click(function(e) {
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
       console.log('Geolocation is not supported');
     }
-  }
+});
 
   function showPosition(position) {
     var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
+    var lng = position.coords.longitude;
 
-    $('#lat').val(initialLoc);
-    $('#lon').val(position.coords.longitude);
+    var id = lat+','+lng;
+    $.ajax({
+      url: '/location',
+      method: 'GET',
+      data: {id: id},
+      success: function(data, status, obj) {
+        $('#geoLoc').val(data.formatted_address);
+        $('#lat').val(data.geometry.location.lat);
+        $('#lon').val(data.geometry.location.lng);
+      },
+      error: function(err, status, message) {
+        $('#geoLoc').val("Location not found");
+      }
+    });
   }
 
   $('#foodButt').on('click', function(e) {
