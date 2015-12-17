@@ -4,20 +4,15 @@
       <div class="container-fluid">
 
         <div class="navbad-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search_nav" aria-expanded="false">
+          <%# <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search_nav" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Workmeet</a>
+          </button>%>
+          <a class="navbar-brand" href="/"><img src="http://i.imgur.com/jabq4b5.png" class="img-responsive workmeet"></a>
         </div>
 
-        <div class="collapse navbar-collapse" id="search_nav">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/signup">Signup</a></li>
-            <li class="active"><a href="/login">Login</a></li>
-          </ul>
           <form class="navbar-form navbar-right" method="GET" action="/location">
             <div class="form-group">
               <input id="lat" type="hidden" class="form-control" name="lat" style='width:auto'>
@@ -28,17 +23,41 @@
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search" name="query">
             </div>
-            <button type="submit" class="btn btn-defualt search">Submit</button>
+            <button type="submit" class="btn btn-warning search seaButt">Submit</button>
 
-            <input id="geoLoc" type="text" class="form-control" name="geoLoc" style='width:auto' placeholder="Location">
-            <button id="geo" type="button" class="btn btn default glyphicon glyphicon-screenshot" value=""></button>
+            <input id="geoLoc" type="text" class="form-control geoLoc" name="geoLoc" style='width:auto' placeholder="Location">
+            <button id="geo" type="button" class="btn btn-warning glyphicon glyphicon-screenshot geoButt" value=""></button>
             </form>
         </div>
       </div>
     </nav>
     <div class="container">
       <div class="row">
-        <% include ./partials/alerts %>
+        <div class="col-xs-4">
+        </div>
+        <div class="col-xs-4">
+          <% include ./partials/alerts %>
+        </div>
+        <div class="col-xs-4">
+          <div class="userInfo pull-right">
+          <% if (currentUser) { %>
+            <span class="text">Welcome</span>
+            <a href="/favorites" value="favorites" class="btn btn-success signupButt">Favorites</a>
+            <form class="form logout" method="GET" action="/login/logout">
+              <div class="form-group">
+              <input type="submit" class="btn btn-warning form-control loginButt" value="logout">
+            </div>
+            </form>
+          <% } else { %>
+            <div class="logSign">
+              <a href="/login" class="btn btn-warning loginButt">Login</a>
+
+              <a href="/signup" class="btn btn-success signupButt">Signup</a>
+            </div>
+          <% }; %>
+          </ul>
+        </div>
+        </div>
       </div>
     <%- body %>
     </div>

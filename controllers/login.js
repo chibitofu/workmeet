@@ -16,9 +16,11 @@ router.post('/', function(req, res) {
     if (err) {
       res.status('error').send("You encountered an error.");
     } else if (user) {
+      req.flash('loggedin', "Welcome back " + user.name + '!');
       req.session.user = user.id;
       res.redirect('/');
     } else {
+      req.flash('noLog', "Incorrect uer info.");
       res.redirect('login');
     }
   });
@@ -26,6 +28,8 @@ router.post('/', function(req, res) {
 
 router.get('/logout', function(req, res){
   req.session.user = false;
+  req.flash('logged', 'You have sucessfully logged out.');
+  res.redirect('/');
 });
 
 module.exports = router;

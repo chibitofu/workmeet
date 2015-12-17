@@ -54,8 +54,7 @@ app.use('/signup', require('./controllers/signup') );
 app.use('/login', require('./controllers/login') );
 
 app.get('/', function(req, res) {
-  req.session.whatever="hello";
-  res.render('index');
+  res.render('index', {alert: req.flash()});
 });
 
 app.get('/location', function(req, res) {

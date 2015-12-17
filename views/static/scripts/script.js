@@ -31,8 +31,8 @@ $('#geo').click(function(e) {
   $('#foodButt').on('click', function(e) {
     e.preventDefault();
     if( $('#newFood').val() ) {
-        $('#food').append('<div class="newTag">' + $('#newFood').val() + '</div>' + ' ');
-        $('#food').append( '<input class="food" type="hidden" name="food" value="' + $('#newFood').val() + '" >');
+        $('#food').append('<div id="' + $('#newFood').val() + '" class="newTag">' + $('#newFood').val() + '<div id="' + $('#newFood').val() + '" class="delete btn-sm glyphicon glyphicon-remove ' + $('#newFood').val() + '">' + '</div></div>' + ' ' + '<script> $("#' +  $('#newFood').val() + '").on("click", function(){ $("#' + $('#newFood').val() + '").remove() }); </script>');
+        $('#food').append( '<input id="' + $('#newFood').val() + '" class="food" type="hidden" name="food" value="' + $('#newFood').val() + '" >');
         $('#newFood').val('');
     }
   });
@@ -40,8 +40,8 @@ $('#geo').click(function(e) {
   $('#drinkButt').on('click', function(e) {
     e.preventDefault();
     if( $('#newDrink').val() ) {
-        $('#drink').append('<div class="newTag">' + $('#newDrink').val() + '</div>' + ' ');
-        $('#drink').append( '<input class="drink" type="hidden" name="drink" value="' + $('#newDrink').val() + '" >');
+        $('#drink').append('<div id="' + $('#newDrink').val() + '" class="newTag">' + $('#newDrink').val() + '<div id="' + $('#newDrink').val() + '" class="delete btn-sm glyphicon glyphicon-remove ' + $('#newDrink').val() + '">' + '</div></div>' + ' ' + '<script> $("#' +  $('#newDrink').val() + '").on("click", function(){ $("#' + $('#newDrink').val() + '").remove() }); </script>');
+        $('#drink').append( '<input id="' + $('#newDrink').val() + '" class="drink" type="hidden" name="drink" value="' + $('#newDrink').val() + '" >');
         $('#newDrink').val('');
     }
   });
@@ -49,8 +49,8 @@ $('#geo').click(function(e) {
   $('#tagButt').on('click', function(e) {
     e.preventDefault();
     if( $('#newTag').val() ) {
-        $('#tag').append('<div class="newTag">' + $('#newTag').val() + '</div>' + ' ');
-        $('#tag').append( '<input class="tag" type="hidden" name="tag" value="' + $('#newTag').val() + '" >');
+        $('#tag').append('<div id="' + $('#newTag').val() + '" class="newTag">' + $('#newTag').val() + '<div id="' + $('#newTag').val() + '" class="delete btn-sm glyphicon glyphicon-remove ' + $('#newTag').val() + '">' + '</div></div>' + ' ' + '<script> $("#' +  $('#newTag').val() + '").on("click", function(){ $("#' + $('#newTag').val() + '").remove() }); </script>');
+        $('#tag').append( '<input id="' + $('#newTag').val() + '" class="tag" type="hidden" name="tag" value="' + $('#newTag').val() + '" >');
         $('#newTag').val('');
     }
   });
@@ -59,14 +59,22 @@ $('#geo').click(function(e) {
     collapsible: true,
     header: "> div > .sortable",
     heightStyle: "content"
-  }).sortable({
+  });
+
+  $('#accordion').sortable({
     axis: "y",
-    handle: "h3",
+    handle: ".sortable",
     placeholder: "ui-state-highlight",
     stop: function(event, ui) {
       ui.item.children("h3").triggerHandler("focusout");
       $(this).accordion('refresh');
     }
   });
+
+  // $('.delete').on('click', function() {
+  //   console.log($(this).attr('id'));
+  //   var id = $(this).attr('id');
+  //   $('"#' + id + '"').remove();
+  // });
 
 });

@@ -1,8 +1,9 @@
-<div class="row">
+<div class="row newFav">
   <div class="col-xs-1">
   </div>
+  <% if (data.name) { %>
   <form class="navbar-form navbar-left" role="search" method="POST" action="/favorites">
-  <div class="col-xs-4">
+  <div class="col-xs-4" >
     <img src="<%= data.icon %>">
     <input type="hidden" value="<%= data.place_id %>" name="placeid">
     <input type="hidden" value="<%= data.icon %>" name="icon">
@@ -121,7 +122,12 @@
           <img src="<%= photos %>">
       <% }); }%>
       </div>
-      <p><button type="submit" class="btn btn-default">Submit</button></p>
+      <p><button type="submit" class="btn btn-warning subButt">Create Favorite</button></p>
     </form>
+    <% } else { %>
+      <div class="jumbotron text-center">
+        <h1>Please log in to add favorites</h1>
+      </div>
+    <% }; %>
   </div>
 </div>
