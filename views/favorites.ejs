@@ -66,6 +66,27 @@
                   <% }; %>
                 </div>
                 <p>
+                  <div>
+                  <% if (food.food) { %>
+                    <% food.food.forEach(function(foods) { %>
+                      <input type="button" name="food" id="<%= foods.food %>" item="<%= foods.food %>" class="Butt btn-sm btn-primary" value="<%= foods.food %>" style="background-color: rgb(49, 93, 134)">
+                      <% }); %>
+                  <% }; %>
+                </div>
+                <div>
+                <% if (drink.drinks) { %>
+                  <% drink.drinks.forEach(function(drinks) { %>
+                    <input type="button" name="drink" id="<%= drinks.drink %>" item="<%= drinks.drink %>" class="Butt btn-sm btn-primary" value="<%= drinks.drink %>" style="background-color: rgb(49, 93, 134)">
+                    <% }); %>
+                <% }; %>
+              </div>
+              <div>
+              <% if (tag.tags) { %>
+                <% tag.tags.forEach(function(tags) { %>
+                  <input type="button" name="tag" id="<%= tags.tag %>" item="<%= tags.tag %>" class="Butt btn-sm btn-primary" value="<%= tags.tag %>" style="background-color: rgb(49, 93, 134)">
+                  <% }); %>
+              <% }; %>
+            </div>
                 <% place.types.forEach(function(types) { %>
                     <span><%= types %>, </span>
                 <% }); %>

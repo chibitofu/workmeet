@@ -55,6 +55,42 @@ router.post('/confirm', function(req, res) {
       {fav_count: place.fav_count + 1},
       {where: {id: info.id}}
     );
+
+    if (typeof info.food == 'object') {
+    info.food.forEach(function(food) {
+      db.food.destroy({where: {food: food} } ).spread(function(foods, created) {
+        db.placeinfoFoods.destroy({where: {placeinfoId: info.id, foodId: foods.id} } );
+      });
+    });
+  } else if (typeof info.food == 'string') {
+      db.food.destroy({where: {food: info.food} } ).spread(function(foods, created) {
+        db.placeinfoFoods.destroy({where: {placeinfoId: info.id, foodId: foods.id} } );
+      });
+    }
+
+    if (typeof info.drink == 'object') {
+    info.drink.forEach(function(drink) {
+      db.drink.destroy({where: {drink: drink} } ).spread(function(drinks, created) {
+        db.placeinfoDrinks.destroy({where: {placeinfoId: info.id, drinkId: drinks.id} } );
+      });
+    });
+  } else if (typeof info.drink == 'string') {
+      db.drink.destroy({where: {drink: info.drink} } ).spread(function(drinks, created) {
+        db.placeinfoDrinks.destroy({where: {placeinfoId: info.id, drinkId: drinks.id} } );
+      });
+    }
+
+    if (typeof info.tag == 'object') {
+    info.tag.forEach(function(tag) {
+      db.tag.destroy({where: {tag: tag} } ).spread(function(tags, created) {
+        db.placeinfoTags.destroy({where: {placeinfoId: info.id, tagId: tags.id} } );
+      });
+    });
+  } else if (typeof info.tag == 'string') {
+      db.tag.destroy({where: {tag: info.tag} } ).spread(function(tags, created) {
+        db.placeinfoTags.destroy({where: {placeinfoId: info.id, tagId: tags.id} } );
+      });
+    }
     res.redirect('../favorites');
   });
 });

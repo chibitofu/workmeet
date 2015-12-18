@@ -86,14 +86,18 @@ $('#geo').click(function(e) {
     });
   });
 
-  $('#testButt').on('click', function(e) {
+  $('.Butt').on('click', function(e) {
     e.preventDefault();
-    var id = $(this).attr('id');
-    if( $(this).css('background-color') == 'rgb(212, 19, 67)' ) {
-      $(this).css('background-color', 'rgb(33, 55, 170)');
-      $('.food').append('<input name="food" value="' + id + ' "');
-    } else $(this).css('background-color', 'rgb(212, 19, 67)');
-    console.log("hello");
+    var tagName = $(this).attr('item');
+    var tagType = $(this).attr('name');
+    if( $('#' + tagName).css('background-color') == 'rgb(49, 93, 134)' ) {
+      $('#' + tagName).css('background-color','rgb(234,53,86)');
+      $('.tagDiv').append('<input class="' + tagName + '"  type="hidden" name="' + tagType+ '" value="' + tagName + '">');
+    } else {
+      $('#' + tagName).css('background-color','rgb(49, 93, 134)');
+      $('input').remove('.'+tagName);
+    }
+
   });
 
   // $('.delete').on('click', function() {
