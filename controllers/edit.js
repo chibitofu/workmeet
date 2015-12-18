@@ -59,7 +59,7 @@ router.post('/confirm', function(req, res) {
 
 //Creates all new tags from edit screen//
     if (typeof info.food == 'object') {
-    fav.food.forEach(function(food) {
+    info.food.forEach(function(food) {
       db.food.findOrCreate({where: {food: food} } ).spread(function(foods, created) {
         db.placeinfoFoods.findOrCreate({where: {placeinfoId: user.id, foodId: foods.id} } );
       });
@@ -71,7 +71,7 @@ router.post('/confirm', function(req, res) {
   }
 
     if (typeof info.drink == 'object') {
-    fav.drink.forEach(function(drink) {
+    info.drink.forEach(function(drink) {
       db.drink.findOrCreate({where: {drink: drink} } ).spread(function(drinks, created) {
         db.placeinfoDrinks.findOrCreate({where: {placeinfoId: user.id, drinkId: drinks.id} } );
       });
@@ -83,7 +83,7 @@ router.post('/confirm', function(req, res) {
     }
 
     if (typeof info.tag == 'object') {
-    fav.tag.forEach(function(tag) {
+    info.tag.forEach(function(tag) {
       db.tag.findOrCreate({where: {tag: tag} } ).spread(function(tags, created) {
         db.placeinfoTags.findOrCreate({where: {placeinfoId: user.id, tagId: tags.id} } );
       });

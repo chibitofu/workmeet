@@ -104,12 +104,16 @@
     <div>
       <p>Business Hours</p>
       <% if(currentUser) { %>
+        <% if (data.opening_hours) { %>
         <input type="hidden" value="<%= data.opening_hours.weekday_text %>" name="hours">
         <ul>
+
           <% data.opening_hours.weekday_text.forEach(function(hours) { %>
             <li style="list-style-type:none"><%= hours %></li>
           <% }); %>
+
         </ul>
+      <% }; %>
       <% }; %>
     </div>
   </div>
