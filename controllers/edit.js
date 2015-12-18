@@ -61,36 +61,36 @@ router.post('/confirm', function(req, res) {
     if (typeof info.food == 'object') {
     info.food.forEach(function(food) {
       db.food.findOrCreate({where: {food: food} } ).spread(function(foods, created) {
-        db.placeinfoFoods.findOrCreate({where: {placeinfoId: user.id, foodId: foods.id} } );
+        db.placeinfoFoods.findOrCreate({where: {placeinfoId: info.id, foodId: foods.id} } );
       });
     });
   } else if (typeof info.food == 'string') {
     db.food.findOrCreate({where: {food: info.food} } ).spread(function(foods, created) {
-      db.placeinfoFoods.findOrCreate({where: {placeinfoId: user.id, foodId: foods.id} } );
+      db.placeinfoFoods.findOrCreate({where: {placeinfoId: info.id, foodId: foods.id} } );
     });
   }
 
     if (typeof info.drink == 'object') {
     info.drink.forEach(function(drink) {
       db.drink.findOrCreate({where: {drink: drink} } ).spread(function(drinks, created) {
-        db.placeinfoDrinks.findOrCreate({where: {placeinfoId: user.id, drinkId: drinks.id} } );
+        db.placeinfoDrinks.findOrCreate({where: {placeinfoId: info.id, drinkId: drinks.id} } );
       });
     });
   } else if (typeof info.drink == 'string') {
       db.drink.findOrCreate({where: {drink: info.drink} } ).spread(function(drinks, created) {
-        db.placeinfoDrinks.findOrCreate({where: {placeinfoId: user.id, drinkId: drinks.id} } );
+        db.placeinfoDrinks.findOrCreate({where: {placeinfoId: info.id, drinkId: drinks.id} } );
       });
     }
 
     if (typeof info.tag == 'object') {
     info.tag.forEach(function(tag) {
       db.tag.findOrCreate({where: {tag: tag} } ).spread(function(tags, created) {
-        db.placeinfoTags.findOrCreate({where: {placeinfoId: user.id, tagId: tags.id} } );
+        db.placeinfoTags.findOrCreate({where: {placeinfoId: info.id, tagId: tags.id} } );
       });
     });
   } else if (typeof info.tag == 'string') {
       db.tag.findOrCreate({where: {tag: info.tag} } ).spread(function(tags, created) {
-        db.placeinfoTags.findOrCreate({where: {placeinfoId: user.id, tagId: tags.id} } );
+        db.placeinfoTags.findOrCreate({where: {placeinfoId: info.id, tagId: tags.id} } );
       });
     }
 
