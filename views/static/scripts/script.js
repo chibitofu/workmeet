@@ -25,6 +25,8 @@ $('#geo').click(function(e) {
       error: function(err, status, message) {
         $('#geoLoc').val("Location not found");
       }
+    }).done(function() {
+    alert( "Location Sent" );
     });
   }
 
