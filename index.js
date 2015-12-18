@@ -75,7 +75,7 @@ app.post('/location', function(req, res) {
       if (err) {
         res.status('error', 500);
       } else {
-        res.status('success', 200).json(location);
+        res.status(200, 'success').json(location);
       }
     });
   } else if ( typeof location == 'string') {
