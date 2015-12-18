@@ -25,6 +25,8 @@ db.placeinfo.find({where: {id: place}}).then(function(places){
 });
 });
 
+
+//Post route for creating a new favorite//
 router.post('/confirm', function(req, res) {
   var info = req.body;
   var newInfo = {

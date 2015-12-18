@@ -10,6 +10,7 @@ router.get('/', function(req, res) {
   res.render('login');
 });
 
+//User login authentication//
 router.post('/', function(req, res) {
 
   db.user.authenticate(req.body.email, req.body.password1, function(err, user) {
