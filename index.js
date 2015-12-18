@@ -11,12 +11,14 @@ var flash = require('connect-flash');
 var session = require('express-session');
 dotenv.load();
 
+//Standard middleware//
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views') );
 app.use(ejslayouts);
 app.use(bodyparser.urlencoded({extended:false} ) );
 app.use(flash());
 
+//Session key//
 app.use(session({
   secret: 'allyourbases',
   resave: false,
@@ -41,6 +43,7 @@ app.use(function(req, res, next){
   next();
 });
 
+//Middleware for alerts//
 app.use(function(req, res, next) {
   res.locals.currentUser = req.currentUser;
   res.locals.alerts = req.flash();
@@ -48,15 +51,18 @@ app.use(function(req, res, next) {
   //Pass in alerts//
 });
 
+//Calling my controllers//
 app.use('/search', require('./controllers/search') );
 app.use('/favorites', require('./controllers/favorites') );
 app.use('/signup', require('./controllers/signup') );
 app.use('/login', require('./controllers/login') );
+app.use('/edit', require('./controllers/edit') );
 
 app.get('/', function(req, res) {
   res.render('index', {alert: req.flash()});
 });
 
+//Grabs location based off of browsers geoposition through ajax.//
 app.get('/location', function(req, res) {
   var location = req.query.id;
   var hasNum = /\d/;

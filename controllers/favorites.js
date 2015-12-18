@@ -5,7 +5,9 @@ var request = require('request');
 var db = require('../models');
 
 router.get('/', function(req, res) {
+  debugger;
   db.placeinfo.findAll().then(function(places) {
+    debugger;
     res.render('favorites', {places: places});
   });
 });
@@ -88,7 +90,7 @@ router.post('/', function(req, res) {
     address: fav.address,
     phone: fav.phone
   };
-debugger;
+
   db.placeinfo.findOrCreate({where : {place_id :fav.placeid }, defaults: newFav } ).spread(function(user) {
     db.placeinfoUsers.findOrCreat({where: {userId: res.session.user.id, foodId: user.id}}).spread(function() {
       db.placeinfo.update(

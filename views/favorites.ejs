@@ -18,38 +18,38 @@
               </div>
               <div>
                 <p>
-                  <p>Wifi: <% if (place.wifi > 6) { %>
+                  <p>Wifi: <% if (place.wifi/place.fav_count > 6) { %>
                       <span class="good">Good</span> </p>
-                      <% } else if (place.wifi > 3) { %>
+                      <% } else if (place.wifi/place.fav_count > 3) { %>
                         <span class="ave">Average</span> </p>
-                      <% } else if (place.wifi > 1) { %>
+                      <% } else if (place.wifi/place.fav_count > 1) { %>
                         <span class="poor">Poor</span> </p>
                         <% } else { %>
                           <span class="none">None</span> </p>
                       <% } %>
-                    <p>Seating: <% if (place.seating > 6) { %>
+                    <p>Seating: <% if (place.seating/place.fav_count > 6) { %>
                         <span class="good">Good</span> </p>
-                        <% } else if (place.seating > 3) { %>
+                        <% } else if (place.seating/place.fav_count > 3) { %>
                           <span class="ave">Average</span> </p>
-                        <% } else if (place.seating > 1) { %>
+                        <% } else if (place.seating/place.fav_count > 1) { %>
                           <span class="poor">Poor</span> </p>
                           <% } else { %>
                             <span class="none">None</span> </p>
                         <% } %>
-                    <p>Outlets: <% if (place.outlets > 6) { %>
+                    <p>Outlets: <% if (place.outlets/place.fav_count > 6) { %>
                         <span class="good">Good</span> </p>
-                        <% } else if (place.outlets > 3) { %>
+                        <% } else if (place.outlets/place.fav_count > 3) { %>
                           <span class="ave">Average</span> </p>
-                        <% } else if (place.outlets > 1) { %>
+                        <% } else if (place.outlets/place.fav_count > 1) { %>
                           <span class="poor">Poor</span> </p>
                           <% } else { %>
                             <span class="none">None</span> </p>
                         <% } %>
-                    <p>Noise: <% if (place.noise > 6) { %>
+                    <p>Noise: <% if (place.noise/place.fav_count > 6) { %>
                         <span class="good">Good</span> </p>
-                        <% } else if (place.noise > 3) { %>
+                        <% } else if (place.noise/place.fav_count > 3) { %>
                           <span class="ave">Average</span> </p>
-                        <% } else if (place.noise > 1) { %>
+                        <% } else if (place.noise/place.fav_count > 1) { %>
                           <span class="poor">Poor</span> </p>
                           <% } else { %>
                             <span class="none">None</span> </p>
@@ -70,13 +70,14 @@
                     <span><%= types %>, </span>
                 <% }); %>
                 </p>
+                <a href="/edit/<%= place.id %>" id="<%= place.id %>" class="btn btn-success edit">Edit</a>
               </div>
               </div>
             <% }) %>
           </div>
     <% } else { %>
       <div class="jumbotron jumbo">
-        <h1>Please log in to add favorites</h1>
+        <h1>Please log in to see favorites</h1>
       </div>
     <% }; %>
   </div>

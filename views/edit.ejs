@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h1 class="title">Edit Favorites</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <% if (currentUser) { %>
+              <div class="">
+                <form method="POST" class='form' action="/edit/confirm">
+                  <button id='testButt' type="button" class="btn btn-default">Test</button>
+                <input type="hidden" name="id" value="<%= places.id %>">
+                <div class="food">
+                  
+                </div>
+                <p class="favTitle"><%= places.name %> <span class="pull-right">Rating:<%= places.rating %></span></p>
+                <p><%= places.address %>
+                <%= places.phone %></p>
+              </div>
+              <div>
+                <p>
+                  <div>
+                    Wifi<br>
+                     <% if ( places.wifi / places.fav_count > 6) { %>
+                       <input type="radio" value="0" name="wifi"> none
+                       <input type="radio" value="2" name="wifi"> bad
+                       <input type="radio" value="5" name="wifi"> average
+                       <input type="radio" value="10" name="wifi" checked> good
+                    <% } else if ( places.wifi / places.fav_count > 3) { %>
+                      <input type="radio" value="0" name="wifi"> none
+                      <input type="radio" value="2" name="wifi"> bad
+                      <input type="radio" value="5" name="wifi" checked> average
+                      <input type="radio" value="10" name="wifi"> good
+                    <% } else if ( places.wifi / places.fav_count > 1) { %>
+                      <input type="radio" value="0" name="wifi"> none
+                      <input type="radio" value="2" name="wifi" checked> bad
+                      <input type="radio" value="5" name="wifi"> average
+                      <input type="radio" value="10" name="wifi"> good
+                    <% } else { %>
+                      <input type="radio" value="0" name="wifi" checked> none
+                      <input type="radio" value="2" name="wifi"> bad
+                      <input type="radio" value="5" name="wifi"> average
+                      <input type="radio" value="10" name="wifi"> good
+                    <% }; %>
+                  </div>
+                  <div>
+                    Noise<br>
+                    <% if ( places.noise / places.fav_count > 6) { %>
+                      <input type="radio" value="1" name="noise" > quiet
+                      <input type="radio" value="5" name="noise" > average
+                      <input type="radio" value="10" name="noise" checked> loud
+                   <% } else if ( places.noise / places.fav_count  > 3) { %>
+                     <input type="radio" value="1" name="noise"> quiet
+                     <input type="radio" value="5" name="noise" checked> average
+                     <input type="radio" value="10" name="noise"> loud
+                   <% } else { %>
+                     <input type="radio" value="1" name="noise" checked> quiet
+                     <input type="radio" value="5" name="noise"> average
+                     <input type="radio" value="10" name="noise"> loud
+                   <% }; %>
+                  </div>
+                  <div>
+                    Seating<br>
+                    <% if ( places.seating / places.fav_count > 6) { %>
+                      <input type="radio" value="0" name="seating"> none
+                      <input type="radio" value="2" name="seating"> bad
+                      <input type="radio" value="5" name="seating"> average
+                     <input type="radio" value="10" name="seating" checked> good
+                   <% } else if ( places.seating / places.fav_count  > 3) { %>
+                     <input type="radio" value="0" name="seating"> none
+                     <input type="radio" value="2" name="seating"> bad
+                     <input type="radio" value="5" name="seating" checked> average
+                    <input type="radio" value="10" name="seating"> good
+                   <% } else if ( places.seating / places.fav_count  > 1) { %>
+                     <input type="radio" value="0" name="seating"> none
+                     <input type="radio" value="2" name="seating" checked> bad
+                     <input type="radio" value="5" name="seating"> average
+                    <input type="radio" value="10" name="seating"> good
+                   <% } else { %>
+                     <input type="radio" value="0" name="seating" checked> none
+                     <input type="radio" value="2" name="seating"> bad
+                     <input type="radio" value="5" name="seating"> average
+                    <input type="radio" value="10" name="seating"> good
+                   <% }; %>
+                  </div>
+                  <div>
+                    Outlets<br>
+                    <% if ( places.outlets / places.fav_count > 6) { %>
+                      <input type="radio" value="0" name="outlets"> none
+                      <input type="radio" value="2" name="outlets"> bad
+                      <input type="radio" value="5" name="outlets"> average
+                     <input type="radio" value="10" name="outlets" checked> good
+                   <% } else if ( places.outlets / places.fav_count  > 3) { %>
+                     <input type="radio" value="0" name="outlets"> none
+                     <input type="radio" value="2" name="outlets"> bad
+                     <input type="radio" value="5" name="outlets" checked> average
+                    <input type="radio" value="10" name="outlets"> good
+                   <% } else if ( places.outlets / places.fav_count  > 1) { %>
+                     <input type="radio" value="0" name="outlets"> none
+                     <input type="radio" value="2" name="outlets" checked> bad
+                     <input type="radio" value="5" name="outlets"> average
+                    <input type="radio" value="10" name="outlets"> good
+                   <% } else { %>
+                     <input type="radio" value="0" name="outlets" checked> none
+                     <input type="radio" value="2" name="outlets"> bad
+                     <input type="radio" value="5" name="outlets"> average
+                    <input type="radio" value="10" name="outlets"> good
+                   <% }; %>
+                  </div>
+                </p>
+                <input type="submit" id="<%= places.id %>" class="btn btn-success edit" value="confirm">
+              </form>
+              </div>
+              </div>
+          </div>
+    <% } else { %>
+      <div class="jumbotron jumbo">
+        <h1>Please log in to see favorites</h1>
+      </div>
+    <% } %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>

@@ -71,6 +71,31 @@ $('#geo').click(function(e) {
     }
   });
 
+  $('.update').on('click', function() {
+    var id = $(this).attr('id');
+    $.ajax({
+      url: '/edit/confirm',
+      method: PUT,
+      data: {id: id},
+      success: function(data, status, obj) {
+        console.log("success");
+      },
+      error: function(data, status, odj) {
+        console.log("failure");
+      }
+    });
+  });
+
+  $('#testButt').on('click', function(e) {
+    e.preventDefault();
+    var id = $(this).attr('id');
+    if( $(this).css('background-color') == 'rgb(212, 19, 67)' ) {
+      $(this).css('background-color', 'rgb(33, 55, 170)');
+      $('.food').append('<input name="food" value="' + id + ' "');
+    } else $(this).css('background-color', 'rgb(212, 19, 67)');
+    console.log("hello");
+  });
+
   // $('.delete').on('click', function() {
   //   console.log($(this).attr('id'));
   //   var id = $(this).attr('id');
