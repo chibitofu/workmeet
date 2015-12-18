@@ -7,10 +7,23 @@
       <div class="spacerDiv editCont">
 
         <div>
-          <p><img src="<%= data.icon %>" class="img-responsive icon"> <span class="pull-right"> Rating: <%= data.rating %></span></p>
+
+            <% if (data.opening_hours && data.opening_hours.open_now) { %>
+              <span class="pull-right openNow" style="color:rgb(49, 134, 68);"> OPEN </span>
+            <% } else if (data.opening_hours) { %>
+              <span class="pull-right openNow" style="color:rgb(234,53,86);"> CLOSED </span>
+            <% } else {}%>
+
+           <span class="pull-right">
+            <% if (data.rating) { %>
+              Rating: <%= data.rating %>
+            <% } %>
+          </span>
+            <p><img src="<%= data.icon %>" class="img-responsive icon"></p>
           <p class="searchName"><%= data.name %></p>
         </div>
         <p><%= data.vicinity %></p>
+        <p class="searchTypes"><%= data.types %></p>
         <div>
           <a class="btn btn-success" href="/favorites/<%= data.place_id %>">Favorite</a>
         </div>

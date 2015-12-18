@@ -175,9 +175,20 @@ footer {
   height: 50px;
 }
 
+.openNow {
+  font-family: 'ABeeZee', sans-serif;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
 .searchName {
   font-size: 24px;
   color: rgb(234,53,86);
+}
+
+.searchTypes{
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 12px;
 }
 
 .search {
