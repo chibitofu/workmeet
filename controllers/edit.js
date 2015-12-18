@@ -33,7 +33,7 @@ router.post('/confirm', function(req, res) {
     outlets: parseInt(info.outlets),
     seating: parseInt(info.seating)
   };
-debugger;
+
 //Updates all radio button settings in edit window//
   db.placeinfo.find({where: {id: info.id}}).then(function(place) {
     db.placeinfo.update(

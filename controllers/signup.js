@@ -24,6 +24,7 @@ router.post('/', function(req, res) {
       };
       db.user.findOrCreate({where: {email: user.email}, defaults : newUser } ).spread(function(user, created) {
         if(created){
+          req.flash('signup', 'Account created.');
           res.redirect('/');
         } else {
           res.redirect('signup');

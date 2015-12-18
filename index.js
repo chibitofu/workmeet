@@ -70,10 +70,11 @@ app.get('/location', function(req, res) {
     var latLonString = location.split(',', 2);
     var latLon = {lat: parseFloat(latLonString[0]), lon: parseFloat(latLonString[1])};
     geocoder.reverseGeocode( latLon.lat,latLon.lon, function ( err, data ) {
+      var location = data.results[0];
       if (err) {
-        res.status('error');
+        res.status('error', 500).send(data.results[0]);
       } else {
-        res.status('success').send(data.results[0]);
+        res.status('success', 200).send(location);
       }
     });
   } else if ( typeof location == 'string') {
