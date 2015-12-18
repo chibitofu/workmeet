@@ -9,6 +9,7 @@ $('#geo').click(function(e) {
 });
 
   function showPosition(position) {
+    console.log("hello");
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
 
@@ -25,8 +26,6 @@ $('#geo').click(function(e) {
       error: function(err, status, message) {
         $('#geoLoc').val("Location not found");
       }
-    }).done(function() {
-    alert( "Location Sent" );
     });
   }
 

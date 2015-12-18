@@ -64,6 +64,7 @@ app.get('/', function(req, res) {
 
 //Grabs location based off of browsers geoposition through ajax.//
 app.get('/location', function(req, res) {
+
   var location = req.query.id;
   var hasNum = /\d/;
   if( hasNum.test(location) ) {
