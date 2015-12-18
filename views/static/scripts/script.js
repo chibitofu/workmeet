@@ -86,20 +86,6 @@ $('#geo').click(function(e) {
     });
   });
 
-  $('.Butt').on('click', function(e) {
-    e.preventDefault();
-    var tagName = $(this).attr('item');
-    var tagType = $(this).attr('name');
-    if( $('#' + tagName).css('background-color') == 'rgb(49, 93, 134)' ) {
-      $('#' + tagName).css('background-color','rgb(234,53,86)');
-      $('.tagDiv').append('<input class="' + tagName + '"  type="hidden" name="' + tagType+ '" value="' + tagName + '">');
-    } else {
-      $('#' + tagName).css('background-color','rgb(49, 93, 134)');
-      $('input').remove('.'+tagName);
-    }
-
-  });
-
   // $('.delete').on('click', function() {
   //   console.log($(this).attr('id'));
   //   var id = $(this).attr('id');

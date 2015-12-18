@@ -5,8 +5,30 @@ var request = require('request');
 var db = require('../models');
 
 router.get('/', function(req, res) {
-  db.placeinfo.findAll().then(function(places) {
-    res.render('favorites', {places: places});
+  db.user.find({
+    where: {id: req.session.user},
+    include: [db.placeinfo]
+  }).then(function(places) {
+      if (places) {
+        db.food.findAll({
+          include: [db.placeinfo]
+        }).then(function(food) {
+
+          db.drink.findAll({
+            include: [db.placeinfo]
+          }).then(function(drinks) {
+
+            db.tag.findAll({
+              include: [db.placeinfo]
+            }).then(function(tag) {
+
+              res.render('favorites', {places: places, food: food, drinks: drinks, tag: tag});
+            });
+          });
+        });
+      } else {
+        res.render('favorites', {places: {places: undefined}, food: {food: undefined}, drink: {drink: undefined}, tag: {tag: undefined} } );
+      }
   });
 });
 
@@ -23,7 +45,7 @@ router.get('/:id', function(req, res) {
       img.push('https://maps.googleapis.com/maps/api/place/photo?maxwidth=125&photoreference=' + data.result.photos[i].photo_reference + '&key=' + apiKey);
     }
   }
-  db.user.findById(req.session.user).then(function(user) {
+
     db.placeinfo.findOne({
       where: {place_id: data.result.place_id}
     }).then(function(places) {
@@ -49,7 +71,6 @@ router.get('/:id', function(req, res) {
         }
       });
     });
-  });
 });
 
 router.post('/', function(req, res) {

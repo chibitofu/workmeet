@@ -9,7 +9,9 @@
   <div class="col-xs-8">
     <% if (currentUser) { %>
         <div id="accordion">
-            <% places.forEach(function(place) { %>
+
+            <% places.placeinfos.forEach(function(place) { %>
+          <% debugger %>
               <div class="group">
               <div class="sortable">
                 <p class="favTitle"><%= place.name %> <span class="pull-right">Rating:<%= place.rating %></span></p>
@@ -67,24 +69,37 @@
                 </div>
                 <p>
                   <div>
-                  <% if (food.food) { %>
-                    <% food.food.forEach(function(foods) { %>
-                      <input type="button" name="food" id="<%= foods.food %>" item="<%= foods.food %>" class="Butt btn-sm btn-primary" value="<%= foods.food %>" style="background-color: rgb(49, 93, 134)">
+                    <% debugger; %>
+                  <% if (food) { %>
+                    <% for (key in food) { %>
+                    <% food[key].placeinfos.forEach(function(foods) { %>
+                      <% if (foods.id == place.id) { %>
+                      <input type="button" name="food" id="<%= food[key].food %>" item="<%= food[key].food %>" class="Butt btn-sm btn-primary" value="<%= food[key].food %>" style="background-color: rgb(49, 93, 134)">
+                      <% }; %>
                       <% }); %>
+                    <% } %>
                   <% }; %>
                 </div>
                 <div>
-                <% if (drink.drinks) { %>
-                  <% drink.drinks.forEach(function(drinks) { %>
-                    <input type="button" name="drink" id="<%= drinks.drink %>" item="<%= drinks.drink %>" class="Butt btn-sm btn-primary" value="<%= drinks.drink %>" style="background-color: rgb(49, 93, 134)">
+                <% if (drinks) { %>
+                  <% for (key in drinks) { %>
+                  <% drinks[key].placeinfos.forEach(function(drink) { %>
+                    <% if (drink.id == place.id) { %>
+                    <input type="button" name="drink" id="<%= drinks[key].drink %>" item="<%= drinks[key].drink %>" class="Butt btn-sm btn-success" value="<%= drinks[key].drink %>" style="background-color: rgb(49, 134, 68)">
+                    <% }; %>
                     <% }); %>
+                  <% } %>
                 <% }; %>
               </div>
               <div>
-              <% if (tag.tags) { %>
-                <% tag.tags.forEach(function(tags) { %>
-                  <input type="button" name="tag" id="<%= tags.tag %>" item="<%= tags.tag %>" class="Butt btn-sm btn-primary" value="<%= tags.tag %>" style="background-color: rgb(49, 93, 134)">
+              <% if (tag) { %>
+                <% for (key in tag) { %>
+                <% tag[key].placeinfos.forEach(function(tags) { %>
+                  <% if (tags.id == place.id) { %>
+                  <input type="button" name="tag" id="<%= tag[key].tag %>" item="<%= tag[key].tag %>" class="Butt btn-sm btn-danger" value="<%= tag[key].tag %>" style="background-color: rgb(234,53,86)">
+                  <% } %>
                   <% }); %>
+                <% } %>
               <% }; %>
             </div>
                 <% place.types.forEach(function(types) { %>
