@@ -1,7 +1,7 @@
 <div class="row newFav">
   <div class="col-xs-1">
   </div>
-  <% if (data.name) { %>
+  <% if (currentUser) { %>
   <form class="navbar-form navbar-left" role="search" method="POST" action="/favorites">
   <div class="col-xs-4" >
     <img src="<%= data.icon %>">
@@ -103,7 +103,7 @@
   <div class="col-xs-3">
     <div>
       <p>Business Hours</p>
-      <% if(data.opening_hours) { %>
+      <% if(currentUser) { %>
         <input type="hidden" value="<%= data.opening_hours.weekday_text %>" name="hours">
         <ul>
           <% data.opening_hours.weekday_text.forEach(function(hours) { %>

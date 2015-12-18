@@ -9,9 +9,7 @@
   <div class="col-xs-8">
     <% if (currentUser) { %>
         <div id="accordion">
-
             <% places.placeinfos.forEach(function(place) { %>
-          <% debugger %>
               <div class="group">
               <div class="sortable">
                 <p class="favTitle"><%= place.name %> <span class="pull-right">Rating:<%= place.rating %></span></p>
@@ -69,7 +67,6 @@
                 </div>
                 <p>
                   <div>
-                    <% debugger; %>
                   <% if (food) { %>
                     <% for (key in food) { %>
                     <% food[key].placeinfos.forEach(function(foods) { %>

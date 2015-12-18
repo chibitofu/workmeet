@@ -14,7 +14,8 @@ router.post('/', function(req, res) {
 
   db.user.authenticate(req.body.email, req.body.password1, function(err, user) {
     if (err) {
-      res.status('error').send("You encountered an error.");
+      req.flash('noLog', "Incorrect uer info.");
+      res.redirect('login');
     } else if (user) {
       req.flash('loggedin', "Welcome back " + user.name + '!');
       req.session.user = user.id;

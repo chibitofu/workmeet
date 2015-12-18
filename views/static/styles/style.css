@@ -171,6 +171,15 @@ footer {
   font-weight: bold;
 }
 
+.icon {
+  height: 50px;
+}
+
+.searchName {
+  font-size: 24px;
+  color: rgb(234,53,86);
+}
+
 .search {
   background-color: rgb(234,53,86);
   color: white;
@@ -181,9 +190,19 @@ footer {
   margin-bottom: 4px;
 }
 
+.spacerDiv {
+  margin: 10px 0;
+}
 
+.edit {
+  margin-top: 25px;
+}
 
-
+.editCont {
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+  padding: 20px;
+}
 
 
 

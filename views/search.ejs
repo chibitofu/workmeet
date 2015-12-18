@@ -1,16 +1,22 @@
 <div class="row">
-  <div class="col-xs-12 text -center">
-    <h1>Hello</h1>
+  <div class="col-xs-3">
+  </div>
+  <div class="col-xs-6 text -center">
+    <h1>Search Results</h1>
     <% data.forEach(function(data) { %>
-      <div>
+      <div class="spacerDiv editCont">
+
         <div>
-          <a href="/favorites/<%= data.place_id %>">Favorite</a>
-        </div>
-        <div>
-          <p><img src="<%= data.icon %>"><%= data.name %> <span> Rating: <%= data.rating %></span></p>
+          <p><img src="<%= data.icon %>" class="img-responsive icon"> <span class="pull-right"> Rating: <%= data.rating %></span></p>
+          <p class="searchName"><%= data.name %></p>
         </div>
         <p><%= data.vicinity %></p>
-          <%  }); %>
+        <div>
+          <a class="btn btn-success" href="/favorites/<%= data.place_id %>">Favorite</a>
+        </div>
       </div>
+          <%  }); %>
+  </div>
+  <div class="col-xs-3">
   </div>
 </div>
