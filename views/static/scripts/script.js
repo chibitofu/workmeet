@@ -15,7 +15,7 @@ $('#geo').click(function(e) {
     var id = lat+','+lng;
     $.ajax({
       url: '/location',
-      method: 'GET',
+      method: 'POST',
       data: {id: id},
       success: function(data, status, obj) {
         $('#geoLoc').val(data.formatted_address);

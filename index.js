@@ -63,9 +63,9 @@ app.get('/', function(req, res) {
 });
 
 //Grabs location based off of browsers geoposition through ajax.//
-app.get('/location', function(req, res) {
+app.post('/location', function(req, res) {
 
-  var location = req.query.id;
+  var location = req.body.id;
   var hasNum = /\d/;
   if( hasNum.test(location) ) {
     var latLonString = location.split(',', 2);
