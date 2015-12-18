@@ -73,9 +73,9 @@ app.get('/location', function(req, res) {
     geocoder.reverseGeocode( latLon.lat,latLon.lon, function ( err, data ) {
       var location = data.results[0];
       if (err) {
-        res.status('error', 500).send(data.results[0]);
+        res.status('error', 500);
       } else {
-        res.status('success', 200).send(location);
+        res.status('success', 200).json(location);
       }
     });
   } else if ( typeof location == 'string') {
