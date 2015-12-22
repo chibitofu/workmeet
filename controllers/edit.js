@@ -3,26 +3,35 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var db = require('../models');
 
+router.get('/', function(req, res) {
+  res.redirect('/');
+});
+
 router.get('/:id', function(req, res) {
   var place = parseInt(req.params.id);
-db.placeinfo.find({where: {id: place}}).then(function(places){
-  db.placeinfo.find({
-    where: {id: place},
-    include: [db.food]
-  }).then(function(food) {
-    db.placeinfo.find({
-      where: {id: place},
-      include: [db.drink]
-    }).then(function(drink) {
+if (req.session.user) {
+    db.placeinfo.find({where: {id: place}}).then(function(places){
       db.placeinfo.find({
         where: {id: place},
-        include: [db.tag]
-      }).then(function(tag) {
-        res.render('edit', {places: places, food: food, drink: drink, tag: tag});
+        include: [db.food]
+      }).then(function(food) {
+        db.placeinfo.find({
+          where: {id: place},
+          include: [db.drink]
+        }).then(function(drink) {
+          db.placeinfo.find({
+            where: {id: place},
+            include: [db.tag]
+          }).then(function(tag) {
+            res.render('edit', {places: places, food: food, drink: drink, tag: tag});
+          });
+        });
       });
     });
-  });
-});
+  } else {
+    req.flash('noEdit', 'Please log in to edit favorites');
+    res.redirect('/');
+  }
 });
 
 

@@ -5,31 +5,35 @@ var request = require('request');
 var db = require('../models');
 
 router.get('/', function(req, res) {
-  db.user.find({
-    where: {id: req.session.user},
-    include: [db.placeinfo]
-  }).then(function(places) {
-      if (places) {
-        db.food.findAll({
-          include: [db.placeinfo]
-        }).then(function(food) {
-
-          db.drink.findAll({
+  if (req.session.user) {
+    db.user.find({
+      where: {id: req.session.user},
+      include: [db.placeinfo]
+    }).then(function(places) {
+        if (places) {
+          db.food.findAll({
             include: [db.placeinfo]
-          }).then(function(drinks) {
+          }).then(function(food) {
 
-            db.tag.findAll({
+            db.drink.findAll({
               include: [db.placeinfo]
-            }).then(function(tag) {
+            }).then(function(drinks) {
 
-              res.render('favorites', {places: places, food: food, drinks: drinks, tag: tag});
+              db.tag.findAll({
+                include: [db.placeinfo]
+              }).then(function(tag) {
+
+                res.render('favorites', {places: places, food: food, drinks: drinks, tag: tag});
+              });
             });
           });
-        });
-      } else {
-        res.render('favorites', {places: {places: undefined}, food: {food: undefined}, drink: {drink: undefined}, tag: {tag: undefined} } );
-      }
-  });
+        } else {
+          res.render('favorites', {places: {places: undefined}, food: {food: undefined}, drink: {drink: undefined}, tag: {tag: undefined} } );
+        }
+    });
+  } else {
+    res.render('favorites', {places: {places: undefined}, food: {food: undefined}, drink: {drink: undefined}, tag: {tag: undefined} } );
+  }
 });
 
 router.get('/:id', function(req, res) {

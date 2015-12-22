@@ -41,7 +41,7 @@
         <div class="col-xs-4">
           <div class="userInfo pull-right">
           <% if (currentUser) { %>
-            <span class="text">Welcome</span>
+            <span class="text"><%= currentUser.name %></span>
             <a href="/favorites" value="favorites" class="btn btn-success signupButt">Favorites</a>
             <form class="form logout" method="GET" action="/login/logout">
               <div class="form-group">
