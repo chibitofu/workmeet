@@ -27,7 +27,7 @@ A Node.js app to help people find and catalogue places to work, meet or study.
   * Google Fonts  
     
   *You must have Node.js and nodemon installed on your computer.*  
-    https://nodejs.org/en/ && https:///www.npmjs.com/package/nodemon  
+    https://nodejs.org/en/ && https://www.npmjs.com/package/nodemon  
   *requires Google Places API key.*  
     https://developers.google.com/places/web-service/  
   
