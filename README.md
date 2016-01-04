@@ -1,6 +1,7 @@
 # workmeet
 ![workmeet_logo](http://i.imgur.com/jabq4b5.png)  
 A Node.js app to help people find and catalogue places to work, meet or study.  
+[Workmeet Heroku link](https://workmeet.herokuapp.com/)
 
  > "dependencies": {
     "bcrypt": "^0.8.5",
